@@ -50,7 +50,12 @@ def inBackpack(aim, recipes, backpack):
         if item not in backpack:
             return False
         else:
-            return True
+            x = recipes[aim].count(item)
+            y = backpack.count(item)
+            if x > y:
+                return False
+            else:
+                return True
 
 def craft(recipes, backpack):
     aim = input("what do you want to craft? ")

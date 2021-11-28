@@ -19,9 +19,11 @@ def findRecipe(recipes):
 def controls():
     print("press [c] to craft")
     print("press [g] to get materials")
+    print("press [e] to eat")
     print("press [t] to trash an item")
     print("press [b] to see backpack")
     print("press [r] to recipes")
+    print("press [s] to show stats")
     print("press [q] to quit")
     print("")
 
@@ -38,7 +40,17 @@ def seeBackpack(backpack):
     if not backpack:
         print("backpack: empty")
     else:
-        print("backpack: | ", end=" ")
-        for i in backpack:
-            print(i + " | ", end=" ")
+        print("backpack: ", end=" ")
+
+        temp = []
+        for item in backpack:
+            if item not in temp:
+                x = backpack.count(item)
+                temp.append(item)
+                if x == 1:
+                    print(item, end="  ")
+                else:
+                    print(item, "[" + str(x) + "]", end="  ")
         print()
+
+#testing

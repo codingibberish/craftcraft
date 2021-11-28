@@ -1,4 +1,4 @@
-import mine
+import hunger, mine, random
 
 pickaxe = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe"]
 
@@ -22,9 +22,17 @@ def checkPickaxe(item, requirements, pickaxe, backpack):
 
 #get functions
 
+def getApple(backpack):
+    backpack.append("apple")
+    print("you got an apple")
+
 def getLog(backpack):
     backpack.append("log")
     print("you got a log")
+    
+    x = random.randint(1,5)
+    if x == 3:
+        getApple(backpack)
 
 def getStone(backpack):
     check = checkPickaxe("stone", requirements, pickaxe, backpack)
@@ -72,3 +80,4 @@ def get(materials, backpack):
         print("cannot be collected")
     else:
         getting[aim](backpack)
+        hunger.loseHunger()

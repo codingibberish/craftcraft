@@ -3,18 +3,18 @@
 """
 to do:
 
-    1. add food and hunger
-    2. see stats (hunger, health)
     2. learn classes
-    2. make backpack output nicer
-    3. make diamonds harder to get
-    6. instructions
+    4. make diamonds harder to get
+    5. make mining less shit
+    5. instructions
+    7. deal with what happens when there's no hunger left - lose health? - lose health every time u do an action until death
+    8. farming
 
 """
 
 import random
 import time
-import practical, mine, hunger, craft, get
+import practical, mine, hunger, craft, get, stats
 
 #declare variables
 backpack = ["axe"]
@@ -26,8 +26,8 @@ recipes = dict([
     ("iron pickaxe", ["iron", "iron", "iron", "stick", "stick"]),
     ("bread", ["wheat", "wheat", "wheat"])
 ])
-items = ["log", "plank", "stick", "wooden pickaxe", "stone", "stone pickaxe", "iron", "iron pickaxe", "diamond", "wheat", "bread"]
-materials = ["log", "stone", "iron", "diamond", "wheat", "bread"]
+items = ["log", "plank", "stick", "wooden pickaxe", "stone", "stone pickaxe", "iron", "iron pickaxe", "diamond", "wheat", "bread", "apple"]
+materials = ["log", "stone", "iron", "diamond", "wheat", "bread", "apple"]
 
 #run game
 
@@ -58,5 +58,7 @@ def game():
             practical.cheats(backpack)
         elif human == "e":
             hunger.eat(backpack)
+        elif human =="s":
+            stats.showStats()
 
 game()
