@@ -27,6 +27,12 @@ def controls():
     print("press [q] to quit")
     print("")
 
+def options(materials):
+    print("[  ", end="")
+    for item in materials:
+        print(item, end=" ")
+    print(" ]")
+
 def trash(backpack):
     human = input("what item would you like to trash? ")
     if human == "axe":

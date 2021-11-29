@@ -1,4 +1,4 @@
-import hunger, mine, random
+import hunger, mine, random, practical
 
 pickaxe = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe"]
 
@@ -43,22 +43,6 @@ def getStone(backpack):
     else:
         print("you need a better pickaxe")
 
-def getIron(backpack):
-    check = checkPickaxe("iron", requirements, pickaxe, backpack)
-
-    if check == True:
-        mine.mining("iron", backpack)
-    else:
-        print("you need a better pickaxe")
-
-def getDiamond(backpack):
-    check = checkPickaxe("diamond", requirements, pickaxe, backpack)
-
-    if check == True:
-        mine.mining("diamond", backpack)
-    else:
-        print("you need a better pickaxe")
-
 def getWheat(backpack):
     backpack.append("wheat")
     print("you got a piece of wheat")
@@ -66,17 +50,20 @@ def getWheat(backpack):
 #get
 
 getting = {
-    "stone":getStone,
+    "stone":mine.mining,
     "log":getLog,
-    "iron":getIron,
-    "diamond":getDiamond,
-    "wheat":getWheat
+    "iron":mine.mining,
+    "diamond":mine.mining,
+    "wheat":getWheat,
+    "meat":hunger.hunting
 }
 
 def get(materials, backpack):
-    aim = input("what do you want to get? ")
-
-    if aim not in materials:
+    aim = input("what do you want to get? [press o for options] ")
+    
+    if aim == "o":
+        practical.options(materials)
+    elif aim not in materials:
         print("cannot be collected")
     else:
         getting[aim](backpack)

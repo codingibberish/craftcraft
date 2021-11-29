@@ -1,34 +1,68 @@
-import random
-import time
+import random, time, practical, hunger
 
-def mining(material, backpack):
+pickaxe = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe"]
 
-    print("you head off into the mines...")
+requirements = {
+    "log":"axe",
+    "stone":"wooden pickaxe",
+    "iron":"stone pickaxe",
+    "diamond":"iron pickaxe",
+}
+
+def checkPickaxe(item, requirements, pickaxe, backpack):
+    #find necessary list placement
+    required = requirements[item]
+    place = pickaxe.index(required)
+    #check if an item above or similar is in backpack
+
+    for i in backpack:
+        if i in pickaxe:
+            if pickaxe.index(i) >= place:
+                return True
+
+def mining(backpack):
+    print("you head off into the mines..")
     time.sleep(1)
 
     on = True
-    while on == True:
-        #generate direction
-        direction = random.choice(["right", "left", "center"])
-        humanDirection = "one"
-        #get human input
-        while direction != humanDirection:
-            humanDirection = input("left, right or center? ")
-            #if human input doesn't match, loops back
-            if humanDirection != direction:
-                print("there is no " + material + " in this direction...")
-        #if human input does match, print this
-        print("you're going in the right direction")
 
-        #check for diamonds against random num gen
-        location = random.randint(1,5)
-        humanLocation = 0
-        #get human input
-        while location != humanLocation:
-            humanLocation = int(input("how far do you want to mine? [you can mine up to 5 blocks] "))
-            if location != humanLocation:
-                print("keep mining...")
-        #break loop if guessed right
-        print("you found " + material + "!")
-        backpack.append(material)
-        on = False
+    while on == True:
+        
+
+        ores=["iron", "iron", "iron", "diamond", "stone", "stone", "stone", "stone"]
+        found = random.choice(ores)
+
+        print("you mine until you find", found)
+        time.sleep(1)
+        print("do you want to mine the", found + "?")
+        human = input()
+
+        if human == "yes" or human == "y":
+            check = checkPickaxe(found, requirements, pickaxe, backpack)
+
+            if check == True:
+                backpack.append(found)
+                print("you got", found)
+                hunger.loseHunger()
+            else:
+                print("you need a better pickaxe")
+        else:
+            pass
+            
+
+
+        ask = 0
+
+        while ask != 1:
+            ask = input("menu: continue [c]  quit [q]  backpack [b] see stats [s]  eat [e]")
+            if ask == "c":
+                ask = 1
+            elif ask =="q":
+                ask = 1
+                on = False
+            elif ask == "b":
+                practical.seeBackpack(backpack)
+            elif ask =="s":
+                hunger.showStats()
+            elif ask == "e":
+                hunger.eat(backpack)
