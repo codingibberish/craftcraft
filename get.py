@@ -55,11 +55,13 @@ getting = {
     "iron":mine.mining,
     "diamond":mine.mining,
     "wheat":getWheat,
-    "meat":hunger.hunting
+    "meat":hunger.hunting,
+    "coal":mine.mining
 }
 
 def get(materials, backpack):
     aim = input("what do you want to get? [press o for options] ")
+    print("")
     
     if aim == "o":
         practical.options(materials)

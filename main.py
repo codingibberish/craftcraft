@@ -4,18 +4,13 @@
 to do:
 
     1. learn classes
-    2. make diamonds harder to get & make mining less shit
-    3. instructions
-    4. farming
-    5. house/chest
-    8. add caves to mining
-
+    2. instructions
+    3. farming
+    4. build a house -> get a furnace -> smelt items -> add a farm -> grow wheat
 
 """
 
-import random
-import time
-import practical, mine, hunger, craft, get
+import practical, hunger, craft, get
 
 #declare variables
 backpack = ["axe"]
@@ -25,10 +20,12 @@ recipes = dict([
     ("wooden pickaxe", ["plank", "plank", "plank", "stick", "stick"]),
     ("stone pickaxe", ["stone", "stone", "stone", "stick", "stick"]),
     ("iron pickaxe", ["iron", "iron", "iron", "stick", "stick"]),
-    ("bread", ["wheat", "wheat", "wheat"])
+    ("diamond pickaxe", ["diamond", "diamond", "diamond", "stick", "stick"]),
+    ("bread", ["wheat", "wheat", "wheat"]),
+    ("furnace", ["stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone"])
 ])
-items = ["log", "plank", "stick", "wooden pickaxe", "stone", "stone pickaxe", "iron", "iron pickaxe", "diamond", "wheat", "bread", "apple", "meat"]
-materials = ["log", "stone", "iron", "diamond", "wheat", "meat"]
+items = ["log", "plank", "stick", "wooden pickaxe", "stone", "stone pickaxe", "iron ore", "iron", "iron pickaxe", "diamond", "wheat", "bread", "apple", "meat", "cooked meat", "diamond pickaxe", "furnace", "coal"]
+materials = ["log", "stone", "iron", "diamond", "wheat", "meat", "coal"]
 
 #run game
 
@@ -37,7 +34,7 @@ def game():
 
     while play == True:
         print("")
-        human = input("menu: craft [c] | get materials [g] | see all controls [i]\n")
+        human = input("menu: craft [c] | get materials [g] | see all controls [i]   >>>  ")
         print("")
 
         if human == "q":

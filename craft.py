@@ -29,10 +29,22 @@ def makeIronPickaxe(backpack):
         backpack.remove("stick")
     backpack.append("iron pickaxe")
 
+def makeDiamondPickaxe(backpack):
+    for i in range(3):
+        backpack.remove("diamond")
+    for i in range(2):
+        backpack.remove("stick")
+    backpack.append("diamond pickaxe")
+
 def makeBread(backpack):
     for i in range(3):
         backpack.remove("wheat")
     backpack.append("bread")
+
+def makeFurnace(backpack):
+    for i in range(8):
+        backpack.remove("stone")
+    backpack.append("furnace")
 
 #craft
 
@@ -42,7 +54,9 @@ crafting = {
     "wooden pickaxe":makeWoodenPickaxe,
     "stone pickaxe":makeStonePickaxe,
     "iron pickaxe":makeIronPickaxe,
-    "bread":makeBread
+    "diamond pickaxe":makeDiamondPickaxe,
+    "bread":makeBread,
+    "furnace":makeFurnace
 }
 
 def inBackpack(aim, recipes, backpack):
@@ -54,17 +68,15 @@ def inBackpack(aim, recipes, backpack):
             y = backpack.count(item)
             if x > y:
                 return False
-            else:
-                return True
 
 def craft(recipes, backpack):
     aim = input("what do you want to craft? ")
 
     if aim not in recipes:
-        print("cannot be crafted")
+        print("\ncannot be crafted")
     else:
         if inBackpack(aim, recipes, backpack) == False:
-            print("items not in backpack")
+            print("\nitems not in backpack")
         else:
             crafting[aim](backpack)
-            print("crafting " + aim)
+            print("\ncrafting " + aim)

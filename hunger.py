@@ -72,11 +72,10 @@ def printHungerBar():
 food = dict([
     ("bread", 5),
     ("apple", 2),
-    ("meat", 7)
+    ("cooked meat", 7)
 ])
 
 def eatFood(item, fp, backpack):
-
     if len(hungerBar) >= 10:
         print("you're too full to eat")
     elif len(healthBar) < 10:
@@ -92,7 +91,7 @@ def eatFood(item, fp, backpack):
 
 def eat(backpack):
     printHungerBar()
-    human = input("what do you want to eat? ")
+    human = input("\nwhat do you want to eat? ")
     
     if human in food:
         if human in backpack:
@@ -100,7 +99,7 @@ def eat(backpack):
         else:
             print("\nitem not in backpack")
     else:
-        print("item not available for eating")
+        print("\nitem not available for eating")
 
 #hunting
 
@@ -134,6 +133,6 @@ def hunting(backpack):
 
             print(f"\nyou find and kill the {animal}")
             backpack.append("meat")
-            print("meat has been added to backpack")
+            print("\nmeat has been added to backpack")
         else:
-            print(f"wrong tree. the {animal} hears you and runs away.")
+            print(f"\nwrong tree. the {animal} hears you and runs away.")

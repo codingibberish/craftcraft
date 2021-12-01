@@ -28,6 +28,7 @@ def controls():
     print("")
 
 def options(materials):
+    print("")
     print("[  ", end="")
     for item in materials:
         print(item, end=" ")
